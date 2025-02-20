@@ -1,20 +1,20 @@
-const API_URL = 'http://localhost:3000/fila';
+const API_URL = 'https://backend-filas-production.up.railway.app/fila';
 // http://localhost:3000/fila
 // ou
 // https://backend-filas-production.up.railway.app/fila
 
 // Função para obter os dados
-export async function getData() {
-  const response = await fetch(`${API_URL}/list`, { method: 'GET' });
+export async function getData(restaurante) {
+  const response = await fetch(`${API_URL}/list/${restaurante}`, { method: 'GET' });
   return response.json();
 }
 
 // Função para inserir um novo documento
-export async function insertDocument() {
-  const ultimoResponse = await fetch(`${API_URL}/buscarUltimo`);
+export async function insertDocument(restaurante) {
+  const ultimoResponse = await fetch(`${API_URL}/buscarUltimo/${restaurante}`);
   const ultimo = await ultimoResponse.json();
 
-  const response = await fetch(`${API_URL}/add`, {
+  const response = await fetch(`${API_URL}/add/${restaurante}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ codigo: ultimo * 10 })
@@ -23,8 +23,8 @@ export async function insertDocument() {
 }
 
 // Função para atualizar um documento
-export async function updateDocument(item) {
-  const response = await fetch(`${API_URL}/update`, {
+export async function updateDocument(item, restaurante) {
+  const response = await fetch(`${API_URL}/update/${restaurante}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(item)
@@ -34,8 +34,8 @@ export async function updateDocument(item) {
 
 
 // Função para atualizar o "voltar"
-export async function updateVoltar(item) {
-  const response = await fetch(`${API_URL}/voltar`, {
+export async function updateVoltar(item, restaurante) {
+  const response = await fetch(`${API_URL}/voltar/${restaurante}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(item)
@@ -43,8 +43,8 @@ export async function updateVoltar(item) {
   return response.json();
 }
 
-export async function updateDesce(item) {
-  const response = await fetch(`${API_URL}/updateDesce`, {
+export async function updateDesce(item, restaurante) {
+  const response = await fetch(`${API_URL}/updateDesce/${restaurante}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(item)
@@ -52,8 +52,8 @@ export async function updateDesce(item) {
   return response.json();
 }
 
-export async function updateSobe(item) {
-  const response = await fetch(`${API_URL}/updateSobe`, {
+export async function updateSobe(item, restaurante) {
+  const response = await fetch(`${API_URL}/updateSobe/${restaurante}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(item)
@@ -61,8 +61,8 @@ export async function updateSobe(item) {
   return response.json();
 }
 
-export async function deleteDocument(item) {
-  const response = await fetch(`${API_URL}/delete`, {
+export async function deleteDocument(item, restaurante) {
+  const response = await fetch(`${API_URL}/delete/${restaurante}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(item)
@@ -70,8 +70,8 @@ export async function deleteDocument(item) {
   return response.json();
 }
 
-export async function chamarFila(item) {
-  const response = await fetch(`${API_URL}/chamar`, {
+export async function chamarFila(item, restaurante) {
+  const response = await fetch(`${API_URL}/chamar/${restaurante}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(item)
@@ -82,8 +82,8 @@ export async function chamarFila(item) {
 
 // Electron
 
-export async function insertPrint(item) {
-  const response = await fetch(`${API_URL}/add`, {
+export async function insertPrint(item, restaurante) {
+  const response = await fetch(`${API_URL}/add/${restaurante}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ 
