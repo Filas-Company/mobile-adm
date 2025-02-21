@@ -33,12 +33,15 @@ function Admin() {
     const diferencaHoras = Math.floor(diferencaMin / 60);
     const minutosRestantes = diferencaMin % 60;
 
+    // Garantir que os minutos tenham dois dígitos
+    const minutosFormatados = minutosRestantes.toString().padStart(2, '0');
+
     if (diferencaHoras < 6) {
-        return `${diferencaHoras}h${minutosRestantes > 0 ? `${minutosRestantes}` : ''}`;
+        return `${diferencaHoras}h${minutosRestantes > 0 ? `${minutosFormatados}` : ''}`;
     }
 
     return `6h+`;
-  }
+}
 
   
 
