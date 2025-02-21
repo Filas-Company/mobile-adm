@@ -6,10 +6,10 @@ const API_URL = 'https://backend-filas-production.up.railway.app/fila';
 // http://localhost:3000/fila
 // ou
 // https://backend-filas-production.up.railway.app/fila
-let { restaurante } = useParams();
 
 const FilaPage = () => {
   const [fila, setFila] = useState([]);
+  const { restaurante } = useParams();
 
   useEffect(() => {
     carregarFila();
