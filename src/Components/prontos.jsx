@@ -7,7 +7,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
 
   return (
     <li className={`fila-adm ${item.status === 1 ? "status-1" : item.status === 2 ? "status-2" : "status-3"}`}>
-      <div>
+      <div className="div-status">
         <input
           className={`${item.status===3 ? 'senha-status-3' : 'senha-status-outro'}`}
           value={tempCod}
