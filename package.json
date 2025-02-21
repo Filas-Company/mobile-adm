@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "set PORT=8001 && react-scripts start",
-    "start-railway": "npx serve -s build",
+    "start-railway": "PORT=8081 npx serve -s build",
     "build": "CI=false react-scripts build",
     "build2": "react-scripts build",
     "test": "react-scripts test",
