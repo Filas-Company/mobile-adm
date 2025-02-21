@@ -2,17 +2,23 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { connectWebSocket } from "./websocket"; // Importando o WebSocket
 
+const API_URL = 'https://backend-filas-production.up.railway.app/fila';
+// http://localhost:3000/fila
+// ou
+// https://backend-filas-production.up.railway.app/fila
+let { restaurante } = useParams();
+
 const FilaPage = () => {
   const [fila, setFila] = useState([]);
 
   useEffect(() => {
     carregarFila();
-    connectWebSocket(); // Conectar ao WebSocket
+    connectWebSocket();
   }, []);
 
   const carregarFila = async () => {
     try {
-      const resposta = await axios.get("http://localhost:3000/list");
+      const resposta = await axios.get(`${API_URL}/list/${restaurante}`);
       setFila(resposta.data);
     } catch (erro) {
       console.error("Erro ao carregar a fila:", erro);
