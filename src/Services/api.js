@@ -1,7 +1,7 @@
-const API_URL = 'https://backend-filas-production.up.railway.app/fila';
+const API_URL = 'https://backend-filas-production.up.railway.app/fila/list';
 // http://localhost:3000/fila
 // ou
-// https://backend-filas-production.up.railway.app/fila
+// https://backend-filas-production.up.railway.app/fila/list
 
 // Função para obter os dados
 export async function getData(restaurante) {
