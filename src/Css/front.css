@@ -222,7 +222,8 @@ ul {
     color: var(--cinzaClaro);
     font-size: 12px;
     margin-top: -11px;
-    margin-left: 6px;
+    margin-left: -3px;
+    text-align: center;
 }
 
 .nome-adm {

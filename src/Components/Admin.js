@@ -18,23 +18,28 @@ function Admin() {
 
   const [itens, setItens] = useState([]);
   const [verChamados, setVerChamados] = useState(false);
-
-  function obterHora(hora) {
-    const horaCriacao = new Date(hora);
-    const horas = horaCriacao.getHours().toString().padStart(2, '0');
-    const minutos = horaCriacao.getMinutes().toString().padStart(2, '0');
-
-    return `${horas}:${minutos}`;
-  }
+  
   function obterMinutos(hora) {
     const horaCriacao = new Date(hora);
     const agora = new Date();
     
     const diferencaMs = agora - horaCriacao; // Diferença em milissegundos
     const diferencaMin = Math.floor(diferencaMs / 60000); // Converter para minutos
-  
-    return `${diferencaMin}m`;
+    
+    if (diferencaMin < 60) {
+        return `${diferencaMin}m`;
+    }
+
+    const diferencaHoras = Math.floor(diferencaMin / 60);
+    const minutosRestantes = diferencaMin % 60;
+
+    if (diferencaHoras < 6) {
+        return `${diferencaHoras}h${minutosRestantes > 0 ? `${minutosRestantes}` : ''}`;
+    }
+
+    return `6h+`;
   }
+
   
 
   useEffect(() => {
@@ -83,7 +88,6 @@ function Admin() {
                   updateVoltar={updateVoltar}
                   chamarFila={chamarFila}
                   fetchData={fetchData}
-                  obterHora={obterHora}
                   obterMinutos={obterMinutos}
                   restaurante={restaurante}
                 />
@@ -110,7 +114,6 @@ function Admin() {
                       updateVoltar={updateVoltar}
                       chamarFila={chamarFila}
                       fetchData={fetchData}
-                      obterHora={obterHora}
                       obterMinutos={obterMinutos}
                       restaurante={restaurante}
                     />
@@ -133,7 +136,6 @@ function Admin() {
                   fetchData={fetchData}
                   updateDesce={updateDesce}
                   updateSobe={updateSobe}
-                  obterHora={obterHora}
                   obterMinutos={obterMinutos}
                   restaurante={restaurante}
                 />
