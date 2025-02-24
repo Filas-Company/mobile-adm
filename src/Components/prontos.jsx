@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, chamarFila, fetchData, updateDesce, updateSobe, obterHora, obterMinutos }) {
+function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, chamarFila, fetchData, updateDesce, updateSobe, obterHora, obterMinutos, restaurante }) {
   const [tempText, setTempText] = useState(item.text);
   const [tempCod, setTempCod] = useState(item.codigo);
   const [tempQntd, setTempQntd] = useState(item.qntd);
 
   return (
     <li className={`fila-adm ${item.status === 1 ? "status-1" : item.status === 2 ? "status-2" : "status-3"}`}>
-      <div>
+      <div className="div-status">
         <input
           className={`${item.status===3 ? 'senha-status-3' : 'senha-status-outro'}`}
           value={tempCod}
@@ -15,7 +15,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
           placeholder="Senha"
           onChange={(e) => setTempCod(e.target.value)}
           onBlur={() => {
-            updateDocument({ ...item, codigo: tempCod }).then(fetchData);
+            updateDocument({ ...item, codigo: tempCod }, restaurante).then(fetchData);
           }}
         />
 
@@ -32,7 +32,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
         placeholder="Nome"
         onChange={(e) => setTempText(e.target.value)}
         onBlur={() => {
-          updateDocument({ ...item, text: tempText }).then(fetchData);
+          updateDocument({ ...item, text: tempText }, restaurante).then(fetchData);
         }}
       />
 
@@ -46,7 +46,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
         step="1"
         onChange={(e) => setTempQntd(e.target.value)}
         onBlur={() => {
-          updateDocument({ ...item, qntd: tempQntd }).then(fetchData);
+          updateDocument({ ...item, qntd: tempQntd }, restaurante).then(fetchData);
         }}
       />
 
@@ -56,7 +56,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
           <button
             className="btn-adm-voltar"
             onClick={() => {
-              updateVoltar({ ...item, status: 3 }).then(fetchData);
+              updateVoltar({ ...item, status: 3 }, restaurante).then(fetchData);
             }}
           >
             <span class="material-symbols-outlined">
@@ -67,7 +67,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
           <button 
             className="btn-adm-del"
             onClick={() => {
-              deleteDocument(item).then(fetchData);
+              deleteDocument(item, restaurante).then(fetchData);
             }}
           >
             <span class="material-symbols-outlined">
@@ -81,7 +81,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
           <button
             className="btn-adm-voltar"
             onClick={() => {
-              updateVoltar({ ...item, status: 3 }).then(fetchData);
+              updateVoltar({ ...item, status: 3 }, restaurante).then(fetchData);
             }}
           >
             <span class="material-symbols-outlined">
@@ -92,7 +92,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
           <button 
             className="btn-adm-del-old"
             onClick={() => {
-              deleteDocument(item).then(fetchData);
+              deleteDocument(item, restaurante).then(fetchData);
             }}
           >
             <span class="material-symbols-outlined">
@@ -105,7 +105,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
             <button
               className="btn-adm-chamar-fila"
               onClick={() => {
-                chamarFila(item).then(fetchData);
+                chamarFila(item, restaurante).then(fetchData);
               }}          
             >
               <span class="material-symbols-outlined">
@@ -116,7 +116,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
             <button 
               className="btn-adm-del-fila"
               onClick={() => {
-                deleteDocument(item).then(fetchData);
+                deleteDocument(item, restaurante).then(fetchData);
               }}
             >
               <span class="material-symbols-outlined">
