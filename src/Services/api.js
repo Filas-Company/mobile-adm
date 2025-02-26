@@ -1,9 +1,9 @@
 
-const API_URL = 'http://localhost:3000/fila';
+const API_URL = 'https://backend-filas.fly.dev/fila';
 
-// http://localhost:3000/fila
-// ou
-// https://backend-filas-production.up.railway.app/fila
+// http://localhost:3000/fila -- LOCAL
+// https://backend-filas.fly.dev/fila -- FLY.IO
+// https://backend-filas-production.up.railway.app/fila -- RAILWAY
 
 // Função para obter os dados
 export async function getData(restaurante) {
