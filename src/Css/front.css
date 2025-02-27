@@ -109,6 +109,7 @@ body {
 
 /* Cores específicas */
 .btn-novo {
+    padding: 10px;
     background-color: var(--cinzaClaro);
 }
 .btn-novo:hover {

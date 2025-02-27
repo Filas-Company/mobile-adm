@@ -8,16 +8,23 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
   return (
     <li className={`fila-adm ${item.status === 1 ? "status-1" : item.status === 2 ? "status-2" : "status-3"}`}>
       <div className="div-status">
-        <input
-          className={`${item.status===3 ? 'senha-status-3' : 'senha-status-outro'}`}
-          value={tempCod}
-          type="text"
-          placeholder="Senha"
-          onChange={(e) => setTempCod(e.target.value)}
-          onBlur={() => {
+      <input
+        className={`${item.status === 3 ? 'senha-status-3' : 'senha-status-outro'}`}
+        value={tempCod}
+        type="text"
+        placeholder="Senha"
+        onChange={(e) => setTempCod(e.target.value)}
+        onBlur={async () => {
+          const existingDocs = await fetchData(); // Busca os documentos existentes
+          const isDuplicate = existingDocs.some(doc => doc.codigo === tempCod);
+
+          if (isDuplicate) {
+            alert("Código já existe! Escolha outro.");
+          } else {
             updateDocument({ ...item, codigo: tempCod }, restaurante).then(fetchData);
-          }}
-        />
+          }
+        }}
+      />
 
         { item.status === 3 ?
           <p className="minutos">{obterMinutos(item.hora_criacao)}</p>

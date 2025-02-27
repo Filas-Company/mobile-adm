@@ -1,5 +1,5 @@
 
-const API_URL = 'https://backend-filas.fly.dev/fila';
+const API_URL = 'http://localhost:3000/fila';
 
 // http://localhost:3000/fila -- LOCAL
 // https://backend-filas.fly.dev/fila -- FLY.IO
@@ -19,7 +19,7 @@ export async function insertDocument(restaurante) {
   const response = await fetch(`${API_URL}/add/${restaurante}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ codigo: ultimo * 10 })
+    body: JSON.stringify({ codigo: ultimo * 1 })
   });
   return response.json();
 }
