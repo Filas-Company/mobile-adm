@@ -15,15 +15,9 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
         placeholder="Senha"
         onChange={(e) => setTempCod(e.target.value)}
         onBlur={async () => {
-          const existingDocs = await fetchData(); // Busca os documentos existentes
-          const isDuplicate = existingDocs.some(doc => doc.codigo === tempCod);
-
-          if (isDuplicate) {
-            alert("Código já existe! Escolha outro.");
-          } else {
             updateDocument({ ...item, codigo: tempCod }, restaurante).then(fetchData);
           }
-        }}
+        }
       />
 
         { item.status === 3 ?
