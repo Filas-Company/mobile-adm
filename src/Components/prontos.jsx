@@ -12,7 +12,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
         className={`${item.status === 3 ? 'senha-status-3' : 'senha-status-outro'}`}
         value={tempCod}
         type="text"
-        placeholder="Senha"
+        placeholder="cod"
         onChange={(e) => setTempCod(e.target.value)}
         onBlur={async () => {
             updateDocument({ ...item, codigo: tempCod }, restaurante).then(fetchData);
