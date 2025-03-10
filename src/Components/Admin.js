@@ -10,7 +10,8 @@ import {
   deleteDocument,
   chamarFila,
   updateDesce,
-  updateSobe
+  updateSobe,
+  updateCodigo
 } from '../Services/api.js';
 
 function Admin() {
@@ -93,6 +94,7 @@ function Admin() {
                   fetchData={fetchData}
                   obterMinutos={obterMinutos}
                   restaurante={restaurante}
+                  updateCodigo={updateCodigo}
                 />
               ))}
             </ul>
@@ -119,6 +121,7 @@ function Admin() {
                       fetchData={fetchData}
                       obterMinutos={obterMinutos}
                       restaurante={restaurante}
+                      updateCodigo={updateCodigo}
                     />
                   ))}
                 </ul>
@@ -141,6 +144,7 @@ function Admin() {
                   updateSobe={updateSobe}
                   obterMinutos={obterMinutos}
                   restaurante={restaurante}
+                  updateCodigo={updateCodigo}
                 />
               ))}
             </ul>

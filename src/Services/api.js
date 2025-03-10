@@ -63,6 +63,15 @@ export async function updateSobe(item, restaurante) {
   return response.json();
 }
 
+export async function updateCodigo(item, restaurante) {
+  const response = await fetch(`${API_URL}/updateCodigo/${restaurante}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(item)
+  });
+  return response.json();
+}
+
 export async function deleteDocument(item, restaurante) {
   const response = await fetch(`${API_URL}/delete/${restaurante}`, {
     method: 'DELETE',

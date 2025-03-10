@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, chamarFila, fetchData, updateDesce, updateSobe, obterHora, obterMinutos, restaurante }) {
+function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, chamarFila, fetchData, updateDesce, updateSobe, obterHora, obterMinutos, restaurante, updateCodigo }) {
   const [tempText, setTempText] = useState(item.text);
   const [tempCod, setTempCod] = useState(item.codigo);
   const [tempQntd, setTempQntd] = useState(item.qntd);
@@ -15,7 +15,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
         placeholder="cod"
         onChange={(e) => setTempCod(e.target.value)}
         onBlur={async () => {
-            await updateDocument({ ...item, codigo: tempCod }, restaurante).then(fetchData);
+            await updateCodigo({ ...item, codigo: tempCod }, restaurante).then(fetchData);
           }
         }
       />
