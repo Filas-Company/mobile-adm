@@ -15,7 +15,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
         placeholder="cod"
         onChange={(e) => setTempCod(e.target.value)}
         onBlur={async () => {
-            updateDocument({ ...item, codigo: tempCod }, restaurante).then(fetchData);
+            await updateDocument({ ...item, codigo: tempCod }, restaurante).then(fetchData);
           }
         }
       />
@@ -60,7 +60,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
               updateVoltar({ ...item, status: 3 }, restaurante).then(fetchData);
             }}
           >
-            <span class="material-symbols-outlined">
+            <span className="material-symbols-outlined">
               reply
             </span>
           </button>
@@ -71,7 +71,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
               deleteDocument(item, restaurante).then(fetchData);
             }}
           >
-            <span class="material-symbols-outlined">
+            <span className="material-symbols-outlined">
                 delete
             </span>
           </button>
@@ -85,7 +85,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
               updateVoltar({ ...item, status: 3 }, restaurante).then(fetchData);
             }}
           >
-            <span class="material-symbols-outlined">
+            <span className="material-symbols-outlined">
               reply
             </span>
           </button>
@@ -96,7 +96,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
               deleteDocument(item, restaurante).then(fetchData);
             }}
           >
-            <span class="material-symbols-outlined">
+            <span className="material-symbols-outlined">
                 delete
             </span>
           </button>
@@ -109,7 +109,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
                 chamarFila(item, restaurante).then(fetchData);
               }}          
             >
-              <span class="material-symbols-outlined">
+              <span className="material-symbols-outlined">
                   check
               </span>
             </button>
@@ -120,7 +120,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
                 deleteDocument(item, restaurante).then(fetchData);
               }}
             >
-              <span class="material-symbols-outlined">
+              <span className="material-symbols-outlined">
                   delete
               </span>
             </button>
